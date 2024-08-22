@@ -1,0 +1,24 @@
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>E-Mail confirmed!</h2>
+
+<p>
+    Your e-mail address has been confirmed. You will be redirected shortly. If not,
+    @Html.ActionLink("click here", "Index", "Home")
+</p>
+
+@section Scripts
+{
+    <script defer>
+        if (window.location.hash.includes('access_token')) {
+            window.location.href = window.location.href.replace('#', '?');
+        } else {
+            window.setTimeout(() => window.location.href = '/', 5000);
+        }
+    </script>
+}

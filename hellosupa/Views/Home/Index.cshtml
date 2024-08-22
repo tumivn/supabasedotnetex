@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    @{
+        var errorMessage = TempData["ErrorMessage"]?.ToString();
+        if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error-message">
+                <strong>Caution! </strong> @errorMessage
+            </div>
+        }
+    }
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $("#error-message").fadeTo(2000, 500).slideUp(500, function(){
+                $("#error-message").slideUp(500);
+            });
+        });
+    </script>
+}
